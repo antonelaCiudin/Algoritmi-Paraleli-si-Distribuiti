@@ -1,0 +1,19 @@
+Tema 1 APD. Generare paralela de fractali folosind
+multimile Mandelbrot si Julia
+Ciudin Antonela. 335CB
+
+In implementarea temei respective, eu am preluat modul de functionare a 
+thrad-urilor din laboratoare.
+Pentru fiecare thread, am creat thread-ul respectiv, apoi am apelat functia 
+care contine algoritmii propriu zisi cu functiile lor aferente Acolo am 
+citit datele din fisier si am alocat o singura data, restrictionand 
+apelarea functiilor respective cu ajutorul a unor variabile cu valoarea 
+de 0 sau 1. Am incadrat conditia respectiva intr-un mutex, pentru a nu 
+incepe rularea algoritmului, fara a avea toate datele citite/alocate. Apoi 
+am apelat functia run_julia unde am ales sa paralelizez for-ul exterior si 
+cel de la transformarea coordonatelor, separand-ule cu o bariera. Dupa 
+run_julia, rumata de o bariera, am repetat procedeul similar citirii si 
+alocarii doar ca pentru scriere si eliberare de memorie.
+Exact aceeasi pasi i-am urmat si pentru algoritmul Mandelbrot.
+Pentru a nu avea probleme cu trimiterea parametrilor, majoritatea variabilelor 
+le-am transformat in variabile globale.
